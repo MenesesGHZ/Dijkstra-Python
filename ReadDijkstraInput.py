@@ -48,18 +48,17 @@ def ReadInput(filename):
         file.close()
 
     ##  LISTA LIMPIA
-    
-
-    for element in edges:
-        for index in range(len(edges)):
-            if(len(edges) == index):
-                break
-            if(element.count(element[0]) ==  edges[index].count(element[0]) and element.count(element[1]) ==  edges[index].count(element[1])):
+    index = 0
+    for i in edges:
+        for j in edges:
+            if i[0] in j  and i[1] in j and i[0]!=j[0]:
                 edges.pop(index)
-                
-    print(edges)
-    vertexes = [Vertex(v_id) for v_id in vertexes]
-    edges = [Edge(edge[0],edge[1],edge[2]) for row in edges for edge in row ]
+        index += 1   
+
+    vertexes2 = vertexes.copy()
+    vertexes = [Vertex(v_id) for v_id in vertexes] 
+    edges = [Edge(vertexes[vertexes2.index(edge[0])],vertexes[vertexes2.index(edge[1])],edge[2]) for edge in edges ]        
+
     return vertexes, edges, interval
                  
             

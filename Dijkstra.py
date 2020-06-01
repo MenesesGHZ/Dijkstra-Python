@@ -7,16 +7,16 @@ def Dijkstra(graph,id_i,id_j):
     while vertexes: 
         close_v = None
         min_weight = sys.maxsize
-        for v in vertexes:
+        for v in vertexes: 
             if(dk_dict[v.id]["distance"] < min_weight):
                 close_v = v
+                min_weight = dk_dict[v.id]["distance"]
         vertexes.remove(close_v)
         for edge in graph.getEdgesByVertex(close_v.id):
             vNeighbour = edge.getNeighbourOf(close_v.id)
             if(dk_dict[vNeighbour.id]["distance"] > dk_dict[close_v.id]["distance"]+edge.weight):
                 dk_dict[vNeighbour.id]["distance"] = dk_dict[close_v.id]["distance"]+edge.weight
                 dk_dict[vNeighbour.id]["from"] = close_v.id
-                
     start = id_j
     short_path = [start] 
     while start != id_i:

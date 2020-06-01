@@ -11,3 +11,6 @@ class Edge:
         elif(self.vertexB.id == id_i):
             return self.vertexA
         return None
+
+    def __str__(self):
+        return "{}~{}.{}".format(self.vertexA.id,self.vertexB.id,self.weight)
